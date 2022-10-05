@@ -11,7 +11,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-const start ApolloServer = async () => {
+const startApolloServer = async () => {
     await server.start();
     server.applyMiddleware({ app });
 
