@@ -34,7 +34,7 @@ const Profile = () => {
                 <FaveTrailList trails={user.trails} title={`${user.usename}'s favorite trails`} />
             </div>
             <div>
-                <CommentList />
+                
             </div>
         </div>
     )
