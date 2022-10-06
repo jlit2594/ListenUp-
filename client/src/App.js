@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Search from './components/Search';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -60,6 +59,7 @@ function App() {
             </Routes>
           </div>
         </div>
+        <Footer />
       </Router>
     </ApolloProvider>
   );
