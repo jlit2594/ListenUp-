@@ -8,7 +8,7 @@ import NoMatch from './pages/NoMatch';
 import Profile from './pages/Profile';
 import SingleTrail from './pages/SingleTrail';
 
-import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache, setContext } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const httpLink = createHttpLink({

@@ -22,7 +22,8 @@ const Header = () => {
                     </>
                 ) : (
                     <>
-                        <Button variant='danger'>Login</Button>                     
+                        <Button variant='danger'>Login</Button>   
+                        <Button variant='danger'>Signup</Button>                  
                     </>
                 )}
             </div>
