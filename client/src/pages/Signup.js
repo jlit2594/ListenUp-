@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/form';
 import Button from 'react-bootstrap/button';
 
@@ -26,23 +27,27 @@ const Signup = () => {
     }
 
     return (
-        <Form onSubmit={handleSignUpFormSubmit}>
+        <Form className='login-form mt-4' onSubmit={handleSignUpFormSubmit}>
+            <h2 className='login mb-3'>Sign Up</h2>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control type="email" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Pick a Cool Username</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control type="email" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="password" />
             </Form.Group>
-            <Button variant="primary" type="submit">
-                Signup
+            <div className='d-flex flex-column'>
+            <Button className='mb-3' variant="danger" type="submit">
+                Sign me up!
             </Button>
+            <Link className='sign-link'>Already have an account? Login here!</Link>
+            </div>
         </Form>  
     )
 }

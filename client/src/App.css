@@ -61,3 +61,17 @@
   width: 50%;
   margin: auto;
 }
+
+.login-form {
+  width: 50%;
+  margin: auto;
+}
+
+.login {
+  font-weight: bold;
+}
+
+.sign-link {
+  font-size: small;
+  text-align: center;
+}

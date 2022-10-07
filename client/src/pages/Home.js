@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <div>
             <Search />
-            <TopSongsList songs={songs.top}/>
+            {/* <TopSongsList /> */}
         </div>
     )
 }
