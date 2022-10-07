@@ -10,20 +10,20 @@ const Header = () => {
     }
 
     return (
-        <div>
-            <div>
-                <h1>TITLE</h1>
+        <div className='d-flex justify-content-between p-3 header'>
+            <div className='align-center'>
+                <h1 className='logo'>Listen Up!</h1>
             </div>
-            <div>
+            <div className='d-flex'>
                 {Auth.loggedIn() ? (
                     <>
-                        <Button variant='danger'>Your Profile</Button>
-                        <Button variant='danger'>Logout</Button>
+                        <Button variant='outline-danger' className="m-2">Your Profile</Button>
+                        <Button variant='danger' className="m-2">Logout</Button>
                     </>
                 ) : (
                     <>
-                        <Button variant='danger'>Login</Button>   
-                        <Button variant='danger'>Signup</Button>                  
+                        <Button variant='outline-danger' className="m-2">Login</Button>   
+                        <Button variant='danger' className="m-2">Sign Up</Button>   
                     </>
                 )}
             </div>

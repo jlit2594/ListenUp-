@@ -11,7 +11,9 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import NoMatch from './pages/NoMatch';
 import Profile from './pages/Profile';
-import SingleTrail from './pages/SingleTrail';
+// import SingleTrail from './pages/SingleTrail';
+
+import "./App.css";
 
 
 const httpLink = createHttpLink({
@@ -40,7 +42,7 @@ function App() {
       <BrowserRouter>
         <div className='flex-column justify-flex-start min-100-vh'>
           <Header />
-          <div className='container'>
+          <div className='main'>
             <Routes>
               <Route path="/"
               element={<Home />}
@@ -55,9 +57,9 @@ function App() {
                 <Route path=":username" element={<Profile />} />
                 <Route path="" element={<Profile />} />
               </Route>
-              <Route path="/trail/:id"
+              {/* <Route path="/trail/:id"
               element={<SingleTrail />}
-              />
+              /> */}
 
               <Route path='*'
               element={<NoMatch />}

@@ -14,13 +14,13 @@ const Search = () => {
     }
 
     return (
-        <InputGroup className="mb-3" onSubmit={trailSearch}>
+        <InputGroup className="mt-5" onSubmit={trailSearch}>
             <Form.Control
-            placeholder="Search for a Location"
-            aria-label="Search for a Location"
+            placeholder="Search for a Song"
+            aria-label="Search for a Song"
             id="loc"
             />
-            <Button variant="btn btn-primary"type='submit'>
+            <Button variant="danger"type='submit'>
             Search
             </Button>
         </InputGroup>        

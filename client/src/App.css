@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #282c34;
+  --secondary-color: #dc3545;
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +19,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +40,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  background-color: black;
+}
+
+.logo {
+  font-family: 'Audiowide', cursive;
+  font-size: xx-large;
+  color: var(--secondary-color);
+  margin: auto;
+}
+
+.main {
+  width: 50%;
+  margin: auto;
 }

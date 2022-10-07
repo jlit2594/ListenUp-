@@ -2,23 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/card';
 
-const SearchResults = ({ trails }) => {
-    if (!trails.length) {
-        return <h3>Sorry, we couldn't find any trails near that location</h3>
+const SearchResults = ({ songs }) => {
+    if (!songs.length) {
+        return <h3>Sorry, we couldn't find any pieces of music with that title</h3>
     }
 
     return (
         <div>
-            {trails &&
-            trails.map(trail => (
+            {songs &&
+            songs.map(song => (
                 <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={trail.img} />
+                <Card.Img variant="top" src={song.img} />
                 <Card.Body>
                   <Card.Title>
-                    <Link to={`/trail/${trail._id}`}>{trail.title}</Link>
+                    <Link to={`/song/${song._id}`}>{song.title}</Link>
                   </Card.Title>
                   <Card.Text>
-                    {trail.text}
+                    {song.artist}
                   </Card.Text>
                 </Card.Body>
               </Card>

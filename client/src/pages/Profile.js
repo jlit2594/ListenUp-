@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
-import FaveTrailList from '../components/FaveTrailList';
+import FaveSongsList from '../components/FaveSongsList';
 
 import Auth from '../utils/auth';
 
@@ -31,10 +31,7 @@ const Profile = () => {
                 {/* probably some stuff about the user  */}
             </div>
             <div>
-                <FaveTrailList trails={user.trails} title={`${user.usename}'s favorite trails`} />
-            </div>
-            <div>
-                
+                <FaveSongsList songs={user.songs} title={`${user.usename}'s favorite songs`} />
             </div>
         </div>
     )
