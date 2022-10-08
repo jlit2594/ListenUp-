@@ -11,7 +11,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-const start ApolloServer = async () => {
+const startApolloServer = async () => {
     await server.start();
     server.applyMiddleware({ app });
 
@@ -22,8 +22,16 @@ const start ApolloServer = async () => {
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, ''))
     })
-
-
 }
+
+var http = require('http');
+const { write } = require('fs');
+http
+.createServer(function(request, response) {
+    response.writeHead(200, { 'Content-Type': 'text/plain '});
+    response/write('Hello World');
+    response.end();
+})
+.listen(8888);
 
 startApolloServer();

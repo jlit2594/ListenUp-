@@ -18,7 +18,8 @@
     "faker": "^6.6.6",
     "graphql": "^16.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.6.4"
+    "mongoose": "^6.6.4",
+    "spotify-web-api-js": "^1.5.2"
   },
   "repository": {
     "type": "git",
