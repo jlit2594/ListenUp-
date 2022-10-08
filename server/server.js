@@ -1,4 +1,7 @@
 const express = require('express');
+const Spotify = require('spotify-web-api-js');
+var s = new Spotify();
+// s.searchTracks()
 const { ApolloServer } = require('apollo-server-express');
 
 const PORT = process.env.PORT || 3001;
