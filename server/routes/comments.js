@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Comment } = require("../models/comment");
+const { Comment } = require("../models/Comment");
 const { auth } = require("../middleware/auth");
 
 router.post("/saveComment", auth, (req, res) => {
@@ -19,7 +19,7 @@ router.post("/saveComment", auth, (req, res) => {
 })
 
 router.post("/getComments", (req, res) => {
-    Comment.find({ "postId": req.body.trailId})
+    Comment.find({ "postId": req.body.songId})
     .populate('writer')
     .exec((err, comments) => {
         if (err) return res.status(400).send(err)
