@@ -20,7 +20,7 @@ const Search = () => {
             aria-label="Search for a Song"
             id="loc"
             />
-            <Button variant="danger"type='submit'>
+            <Button variant="info"type='submit'>
             Search
             </Button>
         </InputGroup>        

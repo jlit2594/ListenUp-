@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #282c34;
-  --secondary-color: #dc3545;
+  --primary-color: #0a1619;
+  --secondary-color: #61dafb;
 }
 
 .App {
@@ -44,10 +44,11 @@
 
 .body {
   font-family: 'Roboto', sans-serif;
+  background-color: var(--primary-color);
 }
 
 .header {
-  background-color: black;
+  background-color: ;
 }
 
 .logo {
@@ -65,6 +66,7 @@
 .login-form {
   width: 50%;
   margin: auto;
+  color: white;
 }
 
 .login {
@@ -74,4 +76,10 @@
 .sign-link {
   font-size: small;
   text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+.sign-link:hover {
+  color: var(--secondary-color)
 }

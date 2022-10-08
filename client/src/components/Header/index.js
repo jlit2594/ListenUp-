@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import Button from 'react-bootstrap/Button';
 
@@ -17,13 +18,21 @@ const Header = () => {
             <div className='d-flex'>
                 {Auth.loggedIn() ? (
                     <>
-                        <Button variant='outline-danger' className="m-2">Your Profile</Button>
-                        <Button variant='danger' className="m-2">Logout</Button>
+                        <Button variant='outline-info' className="m-2">
+                            <Link to="/profile">Your Profile</Link>
+                        </Button>
+                        <Button variant='info' className="m-2" onClick={logout}>
+                            Logout
+                        </Button>
                     </>
                 ) : (
                     <>
-                        <Button variant='outline-danger' className="m-2">Login</Button>   
-                        <Button variant='danger' className="m-2">Sign Up</Button>   
+                        <Button variant='outline-info' className="m-2">
+                            <Link to="/login">Login</Link>
+                        </Button>   
+                        <Button variant='info' className="m-2">
+                            <Link to ="/signup">Sign Up</Link>
+                        </Button>   
                     </>
                 )}
             </div>

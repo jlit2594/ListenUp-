@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/form';
 import Button from 'react-bootstrap/button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Alert from 'react-bootstrap/Alert';
 
 
 import { useMutation } from '@apollo/client';
@@ -42,12 +42,14 @@ const Login = (props) => {
                     <Form.Control type="password" />
                 </Form.Group>
                 <div className='d-flex flex-column'>
-                <Button className='mb-3' variant="danger" type="submit">
+                <Button className='mb-3' variant="info" type="submit">
                     Login
                 </Button>
-                <Link className='sign-link'>Don't have an account yet? Sign up here!</Link>  
+                <Link to="/signup" className='sign-link'>Don't have an account yet? Sign up here!</Link>  
                 </div>                  
             </Form>  
+            {error &&
+            <Alert variant='danger'>Login failed!</Alert>}
         </main>
     )
 }
