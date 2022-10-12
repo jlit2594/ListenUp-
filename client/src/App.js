@@ -36,38 +36,39 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
+
+//running API once
 function App() {
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
-        <div className='flex-column justify-flex-start min-100-vh'>
+        <div className='min-100-vh'>
           <Header />
-          <div className='main'>
+          <div className=''>
             <Routes>
-              <Route path="/"
-              element={<Home />}
+              <Route 
+                path='/'
+                element={<Home />}
               />
-              <Route path="/login"
-              element={<Login />}
+              <Route
+                path='/login'
+                element={<Login />}
               />
-              <Route path="/signup"
-              element={<Signup />}
+              <Route  
+                path='/signup'
+                element={<Signup />}
               />
-              <Route path="/profile">
-                <Route path=":username" element={<Profile />} />
-                <Route path="" element={<Profile />} />
-              </Route>
-              {/* <Route path="/trail/:id"
-              element={<SingleTrail />}
-              /> */}
-
-              <Route path='*'
-              element={<NoMatch />}
+              <Route
+                path='/profile'
+                element={<Profile />}
+              />
+              <Route
+                path='*'
+                element={<NoMatch />}
               />
             </Routes>
           </div>
         </div>
-        {/* <Footer /> */}
       </BrowserRouter>
     </ApolloProvider>
   );
