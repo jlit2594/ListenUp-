@@ -1,13 +1,10 @@
 import React from 'react';
-
-import Search from '../components/Search';
-import TopSongsList from '../components/TopSongsList';
+import PostsList from '../components/PostsList';
 
 const Home = () => {
     return (
         <div>
-            <Search />
-            {/* <TopSongsList /> */}
+            <PostsList posts={posts} />
         </div>
     )
 }

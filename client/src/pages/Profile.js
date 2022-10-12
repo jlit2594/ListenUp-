@@ -31,7 +31,7 @@ const Profile = () => {
                 {/* probably some stuff about the user  */}
             </div>
             <div>
-                <FaveSongsList songs={user.songs} title={`${user.usename}'s favorite songs`} />
+                <PostsList posts={user.posts} title={`${user.usename}'s posts`} />
             </div>
         </div>
     )
