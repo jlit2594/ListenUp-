@@ -1,7 +1,8 @@
 import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
-import FaveSongsList from '../components/FaveSongsList';
+import PostsList from '../components/PostsList';
+import PostForm from '../components/PostForm';
 
 import Auth from '../utils/auth';
 
@@ -18,20 +19,26 @@ const Profile = () => {
     const user = data?.me || data?.user || {};
 
     if (Auth.loggedin() && Auth.getProfile().data.username === userParam) {
-        return <Navigate to="/profile" />
+        return <Navigate to="/profile:username" />
     }
 
     if (loading) {
         return <div>Loading...</div>
     }
 
+    if (!user?.username) {
+        return (
+            <h1>You can't look at this if you're not logged in</h1>
+        )
+    }
+
     return (
         <div>
             <div>
-                {/* probably some stuff about the user  */}
+                <PostsList posts={user.posts} title={`${user.usename}'s posts`} />
             </div>
             <div>
-                <PostsList posts={user.posts} title={`${user.usename}'s posts`} />
+                {!userParam && <PostForm />}
             </div>
         </div>
     )
