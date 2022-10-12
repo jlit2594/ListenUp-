@@ -4,7 +4,6 @@ const { ApolloServer } = require('apollo-server-express');
 
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
-    // stuff
 });
 
 const app = express();
@@ -25,14 +24,14 @@ const startApolloServer = async () => {
     })
 }
 
-var http = require('http');
-const { write } = require('fs');
-http
-.createServer(function(request, response) {
-    response.writeHead(200, { 'Content-Type': 'text/plain '});
-    response/write('Hello World');
-    response.end();
-})
-.listen(8888);
+// var http = require('http');
+// const { write } = require('fs');
+// http
+// .createServer(function(request, response) {
+//     response.writeHead(200, { 'Content-Type': 'text/plain '});
+//     response/write('Hello World');
+//     response.end();
+// })
+// .listen(8888);
 
 startApolloServer();
