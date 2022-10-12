@@ -1,37 +1,20 @@
-const express = require('express');
-
-const { ApolloServer } = require('apollo-server-express');
-
-const PORT = process.env.PORT || 3001;
-const server = new ApolloServer({
-});
-
+const express = require("express");
+const cors = require("cors");
 const app = express();
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/user");
+const postRoutes = require("./routes/post");
 
-app.use(express.urlencoded({ extended: false }));
+app.set("port", process.env.PORT || 3001);
+
+//Middlewares
+app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-const startApolloServer = async () => {
-    await server.start();
-    server.applyMiddleware({ app });
+//Routes
+app.use(authRoutes);
+app.use(userRoutes);
+app.use(postRoutes);
 
-    if (process.env.NODE_ENV === 'production') {
-        app.use(ex[ress.static(path.join(__dirname, ''))])
-    }
-
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, ''))
-    })
-}
-
-// var http = require('http');
-// const { write } = require('fs');
-// http
-// .createServer(function(request, response) {
-//     response.writeHead(200, { 'Content-Type': 'text/plain '});
-//     response/write('Hello World');
-//     response.end();
-// })
-// .listen(8888);
-
-startApolloServer();
+module.exports = server;
