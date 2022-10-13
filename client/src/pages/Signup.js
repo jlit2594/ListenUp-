@@ -37,7 +37,7 @@ const Signup = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Pick a Cool Username</Form.Label>
-                    <Form.Control type="email" />
+                    <Form.Control />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">

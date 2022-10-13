@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import { QUERY_ME } from '../../utils/queries';
 
 const PostForm = () => {
     const [postText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0)
 
-    const [addPost, { error }] = useMutation(------, {
-        update(cache, { data: { addPost } }) {
-            try {
-                const { me } = cache.readQuery({ query: QUERY_ME })
-                cache.writeQuery({
-                    query:QUERY_ME,
-                    data: { me: { ...me, posts: [...me.posts, addPost] } }
-                })
-            } catch (e) {
-                console.warn('ffff')
-            }
+    // const [addPost, { error }] = useMutation(------, {
+    //     update(cache, { data: { addPost } }) {
+    //         try {
+    //             const { me } = cache.readQuery({ query: QUERY_ME })
+    //             cache.writeQuery({
+    //                 query:QUERY_ME,
+    //                 data: { me: { ...me, posts: [...me.posts, addPost] } }
+    //             })
+    //         } catch (e) {
+    //             console.warn('ffff')
+    //         }
 
-            const { posts } = cache.readQuery({ query: QUERY_POSTS })
-            cache.writeQuery({
-                query:QUERY_POSTS,
-                data: { posts: [addPost, ...posts] }
-            })
-        }
-    })
+    //         const { posts } = cache.readQuery({ query: QUERY_POSTS })
+    //         cache.writeQuery({
+    //             query:QUERY_POSTS,
+    //             data: { posts: [addPost, ...posts] }
+    //         })
+    //     }
+    // })
 
     const handleChange = (event) => {
         if (event.target.value.length <= 280) {
