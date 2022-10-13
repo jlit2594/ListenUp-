@@ -11,13 +11,25 @@ const Home = () => {
 
     return (
         <main>
-            {loading ? (
-                <div>Loading...</div>
-            ) : (
-            <PostsList posts={posts} />    
-            )}
+            <div className="flex-row justify-space-between">
+                {loggedIn && (
+                    <div className="col-12 mb-3">
+                        <PostForm />
+                    </div>
+                )}
+                <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
+                    {loading ? (
+                        <div>Loading...</div>
+                    ) : (
+                        <PostsList 
+                            posts={posts}
+                            title ="The Music Feed"
+                        />   
+                    )}
+                </div>
+            </div>
         </main>
-    )
-}
+    );
+};
 
 export default Home;

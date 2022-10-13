@@ -19,8 +19,8 @@ const Login = (props) => {
         setFormState({
             ...formState,
             [name]: value
-        })
-    }
+        });
+    };
 
     // user login on submit
     const handleFormSubmit = async (event) => {
@@ -29,13 +29,13 @@ const Login = (props) => {
         try {
             const { data } = await login({
                 variables: { ...formState }
-            })
+            });
 
             Auth.login(data.login.token)
         } catch (e) {
             console.error(e)
         }
-    }
+    };
 
     return (
         <main>
@@ -60,7 +60,7 @@ const Login = (props) => {
             {error &&
             <Alert variant='danger'>Login failed!</Alert>}
         </main>
-    )
-}
+    );
+};
 
 export default Login;

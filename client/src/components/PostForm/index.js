@@ -12,22 +12,22 @@ const PostForm = () => {
     const [addPost, { error }] = useMutation(ADD_POST, {
         update(cache, { data: { addPost } }) {
             try {
-                const { me } = cache.readQuery({ query: QUERY_ME })
+                const { me } = cache.readQuery({ query: QUERY_ME });
                 cache.writeQuery({
                     query: QUERY_ME,
                     data: { me: { ...me, posts: [...me.posts, addPost] } }
-                })
+                });
             } catch (e) {
                 console.warn('ffff')
             }
 
-            const { posts } = cache.readQuery({ query: QUERY_POSTS })
+            const { posts } = cache.readQuery({ query: QUERY_POSTS });
             cache.writeQuery({
                 query: QUERY_POSTS,
                 data: { posts: [addPost, ...posts] }
-            })
+            });
         }
-    })
+    });
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -36,7 +36,7 @@ const PostForm = () => {
             ...formState,
             [name]: value
         })
-    }
+    };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -44,13 +44,13 @@ const PostForm = () => {
         try {
             await addPost({
                 variables: { ...formState }
-            })
+            });
 
             window.location.replace('/profile')
         } catch (e) {
             console.error(e)
         }
-    }
+    };
 
     return (
         <div>
@@ -66,7 +66,7 @@ const PostForm = () => {
                 <Button variant='info'>Submit</Button>
             </Form>
         </div>
-    )
-}
+    );
+;}
 
 export default PostForm;
