@@ -45,4 +45,22 @@ export const QUERY_ME = gql`
 }
 `;
 
+export const QUERY_POSTS = gql`
+  query thoughts($username: String) {
+    thoughts(username: $username) {
+      _id
+      thoughtText
+      createdAt
+      username
+      reactionCount
+      reactions {
+        _id
+        createdAt
+        username
+        reactionBody
+      }
+    }
+  }
+`;
+
 // export const QUERY_COMMENTS = gql``;

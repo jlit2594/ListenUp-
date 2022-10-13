@@ -25,7 +25,7 @@ app.use(authRoutes);
 app.use(userRoutes);
 app.use(postRoutes);
 
-const start ApolloServer = async () => {
+const startApolloServer = async () => {
     await server.start();
     server.applyMiddleware({ app });
 

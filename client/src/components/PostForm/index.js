@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import { QUERY_ME } from '../../utils/queries';
+import { useMutation } from '@apollo/client';
+import { ADD_POST } from '../../utils/mutations';
+import { QUERY_POST, QUERY_ME } from '../../utils/queries';
 
 const PostForm = () => {
     const [postText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0)
 
-    const [addPost, { error }] = useMutation(------, {
+    const [addPost, { error }] = useMutation(ADD_POST, {
         update(cache, { data: { addPost } }) {
             try {
                 const { me } = cache.readQuery({ query: QUERY_ME })
@@ -50,6 +52,12 @@ const PostForm = () => {
 
     return (
         <div>
+            <p
+                className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
+            >
+                Character Count: {characterCount}/280
+                {error && <span className="ml-2">Something went wrong...</span>}
+            </p>
             <Form onSubmit={handleFormSubmit}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Post Title</Form.Label>

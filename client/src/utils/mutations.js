@@ -24,6 +24,21 @@ export const ADD_USER = gql`
     }
 `;
 
+export const ADD_POST = gql`
+  mutation addPost($postText: String!) {
+    addPost(postText: $postText) {
+      _id
+      PostText
+      createdAt
+      username
+      reactionCount
+      reactions {
+        _id
+      }
+    }
+  }
+`;
+
 // export const ADD_COMMENT = gql``;
 
 // export const DELETE_COMMENT = gql``;
