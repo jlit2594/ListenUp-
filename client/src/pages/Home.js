@@ -3,7 +3,7 @@ import PostsList from '../components/PostsList';
 import PostForm from '../components/PostForm';
 
 import { useQuery } from '@apollo/client';
-import QUERY_POSTS from '../utils/queries';
+import { QUERY_POSTS } from '../utils/queries';
 
 const Home = () => {
     const { loading, data } = useQuery(QUERY_POSTS);
