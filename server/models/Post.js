@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 const commentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
-const slugify = require("slugify");
+// const slugify = require("slugify");
 
 //Post Schema
 const postSchema = new Schema(

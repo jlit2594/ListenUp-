@@ -1,0 +1,30 @@
+[
+    {
+        "postTitle": "Test",
+        "postText": "This is a test",
+        "username": "UserTakeTwo",
+        "comments": [
+            {
+                "commentBody": "wowwoowowowow",
+                "username": "tyree17"
+            }
+        ]
+    },
+    {
+        "postTitle": "Yes",
+        "postText": "We have a post",
+        "username": "UserTakeTwo",
+        "comments": [
+            {
+                "commentBody": "this is definitely a comment",
+                "username": "UserTakeTwo"
+            }
+        ]
+    },
+    {
+        "postTitle": "This is a post",
+        "postText": "Yes, this is definitely a post",
+        "username": "UserTakeTwo",
+        "comments": []
+    }
+]
