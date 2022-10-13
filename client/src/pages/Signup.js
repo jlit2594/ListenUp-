@@ -40,18 +40,18 @@ const Signup = () => {
         <main>
             <Form className='login-form mt-4' onSubmit={handleSignUpFormSubmit}>
                 <h2 className='login mb-3'>Sign Up</h2>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control onChange={handleChange} type="email" />
+                    <Form.Control onChange={handleChange} defaultValue={formState.email} type="email" name="email" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3">
                     <Form.Label>Pick a Cool Username</Form.Label>
-                    <Form.Control onChange={handleChange} />
+                    <Form.Control onChange={handleChange} defaultValue={formState.username} name="username" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control onChange={handleChange} type="password" />
+                    <Form.Control onChange={handleChange} defaultValue={formState.password} type="password" name="password" />
                 </Form.Group>
                 <div className='d-flex flex-column'>
                 <Button className='mb-3' variant="info" type="submit">
