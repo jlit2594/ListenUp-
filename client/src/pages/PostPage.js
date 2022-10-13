@@ -20,8 +20,8 @@ const PostPage = () => {
     }
 
     return (
-        <main>
-            <div>
+        <main className='flex-row'>
+            <div className='flex-column'>
                 <div>
                     <h2>{post.title}</h2>
                     <h4>{post.username} at {post.createdAt}</h4>

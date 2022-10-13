@@ -7,7 +7,7 @@ const CommentList = ({ comments }) => {
             <div className='cmt'>
                 <h2>Comments</h2>
             </div>
-            <div>
+            <div className='flex-column justify-space-evenly'>
                 {comments && 
                 comments.map(comment => (
                     <Card>

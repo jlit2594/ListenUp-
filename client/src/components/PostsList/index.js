@@ -8,7 +8,7 @@ const TopSongsList = ({ posts }) => {
     }
 
     return (
-        <div>
+        <div className='flex-column justify-space-evenly'>
             <h3>Top Posts</h3>
             {posts &&
             posts.map(post => (
