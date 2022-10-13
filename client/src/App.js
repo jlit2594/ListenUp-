@@ -11,7 +11,6 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import NoMatch from './pages/NoMatch';
 import Profile from './pages/Profile';
-// import SingleTrail from './pages/SingleTrail';
 
 import "./App.css";
 

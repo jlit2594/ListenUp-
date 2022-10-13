@@ -12,6 +12,15 @@ const Signup = () => {
     const [formState, setFormState] = useState({ username: '', email: '', password: '' })
     const [addUser, { error }] = useMutation(ADD_USER)
 
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+        setFormState({
+            ...formState,
+            [name]: value
+        });
+    }
+
     // handles user signup + adds user to db
     const handleSignUpFormSubmit = async (event) => {
         event.preventDefault();
@@ -33,16 +42,16 @@ const Signup = () => {
                 <h2 className='login mb-3'>Sign Up</h2>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" />
+                    <Form.Control onChange={handleChange} type="email" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Pick a Cool Username</Form.Label>
-                    <Form.Control />
+                    <Form.Control onChange={handleChange} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" />
+                    <Form.Control onChange={handleChange} type="password" />
                 </Form.Group>
                 <div className='d-flex flex-column'>
                 <Button className='mb-3' variant="info" type="submit">
