@@ -15,7 +15,7 @@ const TopSongsList = ({ posts }) => {
                 <Card>
                     <Card.body>
                         <Card.title>
-                            <Link to={`/song/${post._id}`}>
+                            <Link to={`/post/${post._id}`}>
                                 {post.title}
                             </Link>
                         </Card.title>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
 
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
@@ -21,15 +22,13 @@ const PostPage = () => {
 
     return (
         <main className='flex-row'>
-            <div className='flex-column'>
-                <div>
-                    <h2>{post.title}</h2>
-                    <h4>{post.username} at {post.createdAt}</h4>
-                </div>
-                <div>
-                    {post.text}
-                </div>
-            </div>
+            <Card>
+                <Card.body>
+                    <Card.title>{post.title}</Card.title>
+                    <Card.subtitle>{post.username} at {post.createdAt}</Card.subtitle>
+                    <Card.text>{post.text}</Card.text>
+                </Card.body>
+            </Card>
             <div>
                 {post.commentCount > 0 && (
                     <CommentList comments={post.comments} />
