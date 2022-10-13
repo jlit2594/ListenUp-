@@ -9,7 +9,7 @@ import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
-const Profile = () => {
+const Profile = (props) => {
     const { username: userParam } = useParams();
 
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -18,7 +18,7 @@ const Profile = () => {
 
     const user = data?.me || data?.user || {};
 
-    if (Auth.loggedin() && Auth.getProfile().data.username === userParam) {
+    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/profile:username" />
     }
 
@@ -28,7 +28,7 @@ const Profile = () => {
 
     if (!user?.username) {
         return (
-            <h1>You can't look at this if you're not logged in</h1>
+            <h1 className='align-center'>You can't look at this if you're not logged in</h1>
         )
     }
 

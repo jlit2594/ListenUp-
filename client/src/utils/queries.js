@@ -8,11 +8,8 @@ export const QUERY_USER = gql`
             email
             posts {
                 _id
+                postTitle
                 postText
-            }
-            comments {
-                _id
-                createdAt
             }
         }
     }
@@ -24,10 +21,10 @@ export const QUERY_ME = gql`
         _id
         username
         email
-        friendCount
         posts {
             _id
-            posttText
+            postTitle
+            postText
             createdAt
             commentCount
             comment {
@@ -37,10 +34,6 @@ export const QUERY_ME = gql`
                 username
             }
         }
-        friends {
-            _id
-            username
-        }
     }
 }
 `;
@@ -49,6 +42,7 @@ export const QUERY_POSTS = gql`
   query posts($username: String) {
     posts(username: $username) {
       _id
+      postTitle
       postText
       createdAt
       username
@@ -67,6 +61,7 @@ export const QUERY_POST = gql`
     query post($id: ID!) {
         post(_id: $id) {
             _id
+            postTitle
             postText
             createdAt
             username

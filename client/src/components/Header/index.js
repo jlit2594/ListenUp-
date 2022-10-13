@@ -14,7 +14,7 @@ const Header = () => {
         <div className='d-flex justify-content-between p-3 header'>
             <div className='align-center'>
                 <h1 className='logo'>
-                    <Link to={Auth.loggedIn() ? ('/home') : ('/')}>Listen Up!</Link>
+                    <Link className='logo' to={Auth.loggedIn() ? ('/home') : ('/')}>Listen Up!</Link>
                 </h1>
             </div>
             <div className='d-flex'>

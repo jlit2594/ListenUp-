@@ -45,6 +45,7 @@
 .body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--primary-color);
+  color: white;
 }
 
 .header {
@@ -56,6 +57,7 @@
   font-size: xx-large;
   color: var(--secondary-color);
   margin: auto;
+  text-decoration: none;
 }
 
 .main {
