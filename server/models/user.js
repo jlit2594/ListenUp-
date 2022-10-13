@@ -1,56 +1,98 @@
-var mongoose = require ('mongoose');
-var bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
-var saltRounds = 10;
+const { Schema, model } = require("mongoose");
+const validator = require("validator");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-var schema = mongoose.schema;
+//User Schema
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 6,
+      maxlength: 12,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
+      validate(value) {
+        if (!validator.isEmail(value)) {
+          throw new Error("Email is invalid");
+        }
+      },
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 6,
+      trim: true,
+    },
+    tokens: [
+      {
+        token: {
+          type: String,
+          require: true,
+        },
+      },
+    ],
+  },
+  {
+    timestamps: true,
+  }
+);
 
-var userSchema = new schema ({
-    email: String,
-    firstName: String,
-    lastName: String,
-    password: String
-});
-
-userSchema.pre('save', function( next ) {
-    var user = this;
-
-    if(user.isModified('password')) {
-        bcrypt.genSalt(saltRounds, function(err, salt) {
-            if(err) return next(err);
-
-            bcrypt.hash(user.password, salt, function(err, hash) {
-                if(err) return next(err);
-                user.password = hash
-                next()
-            })
-        })
-    }else {
-        next()
+//Static methods
+userSchema.statics.findByCredentials = async (email, password) => {
+  const user = await User.findOne({ email });
+  if (user) {
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (isMatch) {
+      return user;
+    } else {
+      throw new Error("Unable to login");
     }
-});
+  } else {
+    throw new Error({ error: "Unable to login" });
+  }
+};
+//User methods for encrypt password and generate auth token.
+userSchema.methods.encryptPassword = async (password) => {
+  return await bcrypt.hash(password, 8);
+};
 
-userSchema.methods.generateTokens - function(cb) {
-    var user = this;
-    var token = jwt.sign(user._id.toHexString(), 'secret')
+userSchema.methods.generateAuthToken = async function () {
+  const user = this;
 
-    user.token = token;
-    user.save(function (err, user) {
-        if(err) return cb(err)
-        cb(null, user);
-    })
-}
+  const token = jwt.sign(
+    { _id: user._id.toString() },
+    process.env.AUTHTOKENSTRING
+  );
+  user.tokens = user.tokens.concat({ token });
 
-userSchema.statics.findByToken = function (token, cb) {
-    var user = this;
+  try {
+    await user.save();
+  } catch (error) {
+    throw new Error(error);
+  }
 
-    jwt.verify(token, 'secret', function(err, decode) {
-        user.findOne({"_id":decode, "token": token}, function(err, user) {
-            if(err) return cd(err);
-            cb(null, user);
-        })
-    })
-}
+  return token;
+};
 
-const User = mongoose.model('User', userSchema);
-module.exports = { User }
+userSchema.methods.toJSON = function () {
+  const user = this;
+  const userObject = user.toObject();
+
+  return userObject.tokens;
+};
+
+const User = model("User", userSchema);
+
+module.exports = User;
