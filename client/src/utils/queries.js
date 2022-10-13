@@ -6,13 +6,10 @@ export const QUERY_USER = gql`
             _id
             username
             email
-            faveTrails {
+            posts {
                 _id
-                trailName
-            }
-            comments {
-                _id
-                createdAt
+                postTitle
+                postText
             }
         }
     }
@@ -24,23 +21,57 @@ export const QUERY_ME = gql`
         _id
         username
         email
-        friendCount
-        thoughts {
+        posts {
             _id
-            thoughtText
+            postTitle
+            postText
             createdAt
-            reactionCount
-            reactions {
+            commentCount
+            comment {
                 _id
                 createdAt
-                reactionBody
+                commentBody
                 username
             }
         }
-        friends {
-            _id
-            username
-        }
     }
 }
+`;
+
+export const QUERY_POSTS = gql`
+  query posts($username: String) {
+    posts(username: $username) {
+      _id
+      postTitle
+      postText
+      createdAt
+      username
+      commentCount
+      comments {
+        _id
+        createdAt
+        username
+        commentBody
+      }
+    }
+  }
+`;
+
+export const QUERY_POST = gql`
+    query post($id: ID!) {
+        post(_id: $id) {
+            _id
+            postTitle
+            postText
+            createdAt
+            username
+            commentCount
+            comments {
+                _id
+                createdAt
+                username
+                commentBody
+            }
+        }
+    }
 `;

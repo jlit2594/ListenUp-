@@ -13,6 +13,15 @@ const Login = (props) => {
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [login, { error }] = useMutation(LOGIN_USER);
 
+    const handleChange = (event) => {
+        const { name, value } = event.target
+
+        setFormState({
+            ...formState,
+            [name]: value
+        })
+    }
+
     // user login on submit
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -34,12 +43,12 @@ const Login = (props) => {
                 <h2 className='login mb-3'>Login</h2>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" />
+                    <Form.Control onChange={handleChange} defaultValue={formState.email} type="email" name="email" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" />
+                    <Form.Control onChange={handleChange} defaultValue={formState.password} name="password" type="password" />
                 </Form.Group>
                 <div className='d-flex flex-column'>
                 <Button className='mb-3' variant="info" type="submit">

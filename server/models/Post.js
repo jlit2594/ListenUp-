@@ -1,44 +1,51 @@
 const { Schema, model } = require("mongoose");
+const commentSchema = require('./Comment');
+const dateFormat = require('../utils/dateFormat');
 const slugify = require("slugify");
 
 //Post Schema
 const postSchema = new Schema(
   {
-    image: String,
-    title: {
+    postTitle: {
       type: String,
-      required: true,
-    },
-    description: String,
-    markdown: {
-      type: String,
-      required: true,
+      required: true
     },
     createdAt: {
       type: Date,
       default: Date.now,
+      get: timestamp => dateFormat(timestamp)
     },
-    slug: {
+    username: {
       type: String,
-      required: true,
-      unique: true
-    }
+      required: true
+    },
+    comments: [commentSchema]
   },
   {
-    timestamps: true,
+    toJSON: {
+      getters: true
+    }
   }
 );
 
-postSchema.pre("validate", function(next) {
-  const post = this;
+// postSchema.pre("validate", function(next) {
+//   const post = this;
   
-  if(post.title) {
-    post.slug = slugify(post.title, { lower: true, strict: true });
-  }
+//   if(post.title) {
+//     post.slug = slugify(post.title, { lower: true, strict: true });
+//   }
 
-  next();
-})
+//   next();
+// })
 
-const Post = model("Post", postSchema);
+// const Post = model("Post", postSchema);
+
+// module.exports = Post;
+
+postSchema.virtual('commentCount').get(function() {
+  return this.comments.length;
+});
+
+const Post = model('Post', postSchema);
 
 module.exports = Post;

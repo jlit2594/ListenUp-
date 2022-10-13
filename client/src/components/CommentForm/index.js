@@ -3,11 +3,12 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 import { useMutation } from '@apollo/client';
+import { ADD_COMMENT } from '../../utils/mutations';
 
 const CommentForm = ({ postId }) => {
     const [commentBody, setBody] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
-    const [addComment, {error}] = useMutation()
+    const [addComment, {error}] = useMutation(ADD_COMMENT)
 
     const handleChange = (event) => {
         if (event.target.value.length <= 280) {
@@ -37,10 +38,10 @@ const CommentForm = ({ postId }) => {
                 Charactercount : {characterCount}/280
                 {error && <span>Something went wrong...</span>}
             </p>
-            <Form>
+            <Form onSubmit={handleFormSubmit}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Write your comment here</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
+                    <Form.Control onChange={handleChange} defaultValue={commentBody} as="textarea" rows={3} />
                 </Form.Group>
                 <Button variant='info'>Submit</Button>
             </Form>

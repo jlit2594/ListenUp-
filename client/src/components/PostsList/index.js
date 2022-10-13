@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 const TopSongsList = ({ posts }) => {
     if (!posts.length) {
-        return <h3>Oops! We did it again!</h3>
+        return <h3>No posts yet</h3>
     }
 
     return (
