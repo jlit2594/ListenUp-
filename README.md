@@ -15,6 +15,9 @@ What once was a application to find and comment on different hike trails, became
 * REACT
 * MongoDB
 * Mongoose
+* JavaScript
+* CSS
+* HTML
 
 ### Functionality
 
